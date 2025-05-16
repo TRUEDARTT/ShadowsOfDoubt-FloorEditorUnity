@@ -3,7 +3,7 @@ using NUnit.Framework;
 using TMPro;
 using UnityEngine;
 
-
+// TODO: Fix locked
 public class GridSquare : MonoBehaviour
 {
     private Address _addressPreset;
@@ -53,18 +53,15 @@ public class GridSquare : MonoBehaviour
     
     public void SetAddressPreset(Address addressPreset)
     {
-        if (!IsLocked)
-        {
-            _addressPreset = addressPreset;
-            UpdateVisuals();
-        }
+        _addressPreset = addressPreset;
+        UpdateVisuals();
     }
 
     public Room RoomPreset => _roomPreset ?? null;
     
     public void SetRoomType(Room roomPreset)
     {
-        _roomPreset = IsLocked ? NullRoom : roomPreset;
+        _roomPreset = roomPreset;
         // You can add specific color mappings for room types here if desired
         UpdateVisuals();
     }

@@ -12,9 +12,9 @@ public class RoomManager : MonoBehaviour
 [Serializable]
 public class Room
 {
-    public int id;
+    public int id = -1;
     public Color color;
-    public string roomPreset;
+    public string roomPreset; // RoomTypePreset string reference
 }
 
 public static class RoomPresets

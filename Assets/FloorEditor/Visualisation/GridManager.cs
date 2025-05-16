@@ -34,7 +34,7 @@ public class GridManager : MonoBehaviour
                 GameObject square = PrefabUtility.InstantiatePrefab(squarePrefab, transform) as GameObject;
                 square.transform.position = position;
                 square.name = $"Square_{x}_{y}";
-                square.hideFlags = HideFlags.HideInInspector | HideFlags.DontSaveInEditor;
+                //square.hideFlags = HideFlags.HideInInspector | HideFlags.DontSaveInEditor;
                 SceneVisibilityManager.instance.DisablePicking(square, true);
                 
                 grid[x, y] = square.GetComponent<GridSquare>();

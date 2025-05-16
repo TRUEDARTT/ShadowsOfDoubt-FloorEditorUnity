@@ -17,6 +17,13 @@ public class GridManagerEditor : Editor
         AddressManager addressManager = gridManager.GetComponent<AddressManager>();
         EditorGUI.BeginChangeCheck();
 
+        if (GUILayout.Button("Create/Refresh Grid"))
+        {
+            Undo.RecordObject(gridManager, "Create Grid");
+            gridManager.CreateGrid();
+            EditorSceneManager.MarkSceneDirty(gridManager.gameObject.scene);
+        }
+        
         showGridControls = EditorGUILayout.Foldout(showGridControls, "Grid Controls", true);
         if (showGridControls)
         {
@@ -41,12 +48,6 @@ public class GridManagerEditor : Editor
             EditorGUI.indentLevel--;
 
             EditorGUILayout.Space();
-            if (GUILayout.Button("Create/Refresh Grid"))
-            {
-                Undo.RecordObject(gridManager, "Create Grid");
-                gridManager.CreateGrid();
-                EditorSceneManager.MarkSceneDirty(gridManager.gameObject.scene);
-            }
 
             if (GUILayout.Button("Clear Grid"))
             {
@@ -73,6 +74,8 @@ public class GridManagerEditor : Editor
                     "Ctrl + Right click: Pick color only", 
                     MessageType.Info
                 );
+
+                isWallPainting = false;
             }
             
             isWallPainting = GUILayout.Toggle(isWallPainting, isWallPainting ? "Disable Wall Mode" : "Enable Wall Mode", "Button");
@@ -85,6 +88,8 @@ public class GridManagerEditor : Editor
                     "Right click: Pick wall type",
                     MessageType.Info
                 );
+
+                isNodePainting = false;
             }
         }
 
