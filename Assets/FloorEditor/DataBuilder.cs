@@ -131,7 +131,7 @@ public class DataBuilder : MonoBehaviour
             // TODO: Marking up tile data
             floorData.t_d = JsonUtility.FromJson<FloorSaveData>(textAsset.text).t_d;
             
-            System.IO.File.WriteAllText("D:\\testNewBuilding.json", JsonUtility.ToJson(floorData, true));
+            System.IO.File.WriteAllText(@"E:\UnityDev\SodBuildingVisualiser\Assets\FloorSaves\testNewBuilding.json", JsonUtility.ToJson(floorData, true));
             Debug.Log("Saved");
             
             Save = false;

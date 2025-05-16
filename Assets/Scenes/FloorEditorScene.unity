@@ -544,78 +544,45 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectedRoomForPainting: 5
   rooms:
-  - id: 9
+  - id: 62
     color: {r: 1, g: 1, b: 1, a: 1}
     roomPreset: Null
-  - id: 3
+  - id: 64
     color: {r: 1, g: 1, b: 1, a: 1}
     roomPreset: Null
-  - id: 4
+  - id: 65
     color: {r: 1, g: 1, b: 1, a: 1}
     roomPreset: Null
-  - id: 27
+  - id: 1625
     color: {r: 1, g: 1, b: 1, a: 1}
-    roomPreset: Reception
-  - id: 28
-    color: {r: 1, g: 1, b: 1, a: 1}
-    roomPreset: OfficeSpace
-  - id: 29
-    color: {r: 1, g: 1, b: 1, a: 1}
-    roomPreset: PrivateOffice
-  - id: 5
+    roomPreset: Park
+  - id: 66
     color: {r: 1, g: 1, b: 1, a: 1}
     roomPreset: Null
-  - id: 14
+  - id: 1630
     color: {r: 1, g: 1, b: 1, a: 1}
-    roomPreset: CorporateCorridoor
-  - id: 15
-    color: {r: 1, g: 1, b: 1, a: 1}
-    roomPreset: PublicBathroom
-  - id: 16
-    color: {r: 1, g: 1, b: 1, a: 1}
-    roomPreset: PublicBathroom
-  - id: 6
+    roomPreset: Park
+  - id: 67
     color: {r: 1, g: 1, b: 1, a: 1}
     roomPreset: Null
-  - id: 57
+  - id: 1635
     color: {r: 1, g: 1, b: 1, a: 1}
-    roomPreset: CorporateLobby
-  - id: 58
-    color: {r: 1, g: 1, b: 1, a: 1}
-    roomPreset: CorporateLobby
-  - id: 7
+    roomPreset: Park
+  - id: 68
     color: {r: 1, g: 1, b: 1, a: 1}
     roomPreset: Null
-  - id: 16
+  - id: 1640
     color: {r: 1, g: 1, b: 1, a: 1}
-    roomPreset: StreetFrontage
-  - id: 8
-    color: {r: 1, g: 1, b: 1, a: 1}
-    roomPreset: Null
-  - id: 17
-    color: {r: 1, g: 1, b: 1, a: 1}
-    roomPreset: StreetFrontage
-  - id: 18
-    color: {r: 1, g: 1, b: 1, a: 1}
-    roomPreset: StreetFrontage
-  - id: 10
+    roomPreset: Park
+  - id: 69
     color: {r: 1, g: 1, b: 1, a: 1}
     roomPreset: Null
-  - id: 19
+  - id: 1645
     color: {r: 1, g: 1, b: 1, a: 1}
-    roomPreset: StreetFrontage
-  - id: 11
+    roomPreset: Path
+  - id: 1646
     color: {r: 1, g: 1, b: 1, a: 1}
-    roomPreset: Null
-  - id: 87
-    color: {r: 1, g: 1, b: 1, a: 1}
-    roomPreset: PowerRoom
-  - id: 12
-    color: {r: 1, g: 1, b: 1, a: 1}
-    roomPreset: Null
-  - id: 92
-    color: {r: 1, g: 1, b: 1, a: 1}
-    roomPreset: CorporateLobby
+    roomPreset: Path
 --- !u!114 &1657764034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -633,25 +600,17 @@ MonoBehaviour:
   - color: {r: 1, g: 0, b: 0.41361904, a: 1}
     addressPreset: Outside
   - color: {r: 1, g: 0.6604272, b: 0, a: 1}
-    addressPreset: CorporateLobby
-  - color: {r: 0.65444326, g: 0, b: 1, a: 1}
-    addressPreset: Municipal
-  - color: {r: 1, g: 0.9812066, b: 0, a: 1}
-    addressPreset: BuildingBathrooms
-  - color: {r: 0.21951771, g: 0, b: 1, a: 1}
-    addressPreset: CorporateLobby
-  - color: {r: 0.7075472, g: 0.7075472, b: 0.7075472, a: 1}
-    addressPreset: StreetFrontage
-  - color: {r: 0, g: 1, b: 0.6880622, a: 1}
-    addressPreset: StreetFrontage
-  - color: {r: 1, g: 0, b: 0.41361904, a: 1}
-    addressPreset: StreetFrontage
-  - color: {r: 1, g: 0.6604272, b: 0, a: 1}
-    addressPreset: StreetFrontage
-  - color: {r: 0.65444326, g: 0, b: 1, a: 1}
-    addressPreset: PowerRoom
+    addressPreset: Lobby
   - color: {r: 0, g: 0.74793315, b: 1, a: 1}
-    addressPreset: CorporateLobby
+    addressPreset: Park
+  - color: {r: 0.65444326, g: 0, b: 1, a: 1}
+    addressPreset: Park
+  - color: {r: 1, g: 0.9812066, b: 0, a: 1}
+    addressPreset: Park
+  - color: {r: 0, g: 1, b: 0.05548787, a: 1}
+    addressPreset: Park
+  - color: {r: 0.21951771, g: 0, b: 1, a: 1}
+    addressPreset: Path
 --- !u!114 &1657764035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -664,8 +623,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbf1a9ddb408e374e999f5f0c32485c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textAsset: {fileID: 4900000, guid: 038755b9f634c96468d8a1133c1d6dc9, type: 3}
-  floorName: CityHall_GroundFloor
+  textAsset: {fileID: 4900000, guid: 5cbb4fe0a380e24488ace56486e478e4, type: 3}
+  floorName: Park_GroundFloor01
   Load: 0
   Save: 0
 --- !u!114 &1657764036
@@ -693,7 +652,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7e96fedb1965b34e94e107e4a5fc02c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedDoorWindowPreset: 16
+  selectedDoorWindowPreset: 21
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
