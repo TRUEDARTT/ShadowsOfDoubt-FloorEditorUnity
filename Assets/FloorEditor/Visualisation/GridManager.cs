@@ -16,7 +16,7 @@ public class GridManager : MonoBehaviour
     [InitializeOnLoadMethod]
     private static void OnProjectReload()
     {
-        GameObject.FindAnyObjectByType<GridManager>().CreateGrid();
+        GameObject.FindAnyObjectByType<GridManager>()?.CreateGrid();
     }
     
     public void CreateGrid()
@@ -41,40 +41,37 @@ public class GridManager : MonoBehaviour
                 
                 if (x < 3 || y < 3 || x > width - 4 || y > height - 4)
                     grid[x, y].IsLocked = true;
-
-                if (x >= 3 && y >= 3 && x <= width - 3 && y <= height - 3)
+                
+                if (x > 0)
                 {
-                    if (x <= width - 3)
-                    {
-                        var xWallGO = PrefabUtility.InstantiatePrefab(wallPrefab, transform) as GameObject;
-                        xWallGO.transform.localRotation = Quaternion.Euler(0, 90, 0);
-                        xWallGO.transform.position = position - new Vector3(0.5f, 0, 0f);
-                        xWallGO.name = $"XWall_{x}_{y}";
-                        xWallGO.hideFlags = HideFlags.HideInInspector | HideFlags.DontSaveInEditor;
-                        SceneVisibilityManager.instance.DisablePicking(xWallGO, true);
-                        
-                        var xWall = xWallGO.GetComponent<GridWall>();
-                        xWall.negativeSquare = grid[x - 1, y];
-                        xWall.positiveSquare = grid[x, y];
-                        xWall.xAxis = true;
-                        xWall.UpdateVisuals();
-                    }
+                    var xWallGO = PrefabUtility.InstantiatePrefab(wallPrefab, transform) as GameObject;
+                    xWallGO.transform.localRotation = Quaternion.Euler(0, 90, 0);
+                    xWallGO.transform.position = position - new Vector3(0.5f, 0, 0f);
+                    xWallGO.name = $"XWall_{x}_{y}";
+                    xWallGO.hideFlags = HideFlags.HideInInspector | HideFlags.DontSaveInEditor;
+                    SceneVisibilityManager.instance.DisablePicking(xWallGO, true);
+                    
+                    var xWall = xWallGO.GetComponent<GridWall>();
+                    xWall.negativeSquare = grid[x - 1, y];
+                    xWall.positiveSquare = grid[x, y];
+                    xWall.xAxis = true;
+                    xWall.UpdateVisuals();
+                }
 
-                    if (y <= width - 3)
-                    {
-                        var zWallGO = PrefabUtility.InstantiatePrefab(wallPrefab, transform) as GameObject;
-                        zWallGO.transform.localRotation = Quaternion.Euler(0, 0, 0);
-                        zWallGO.transform.position = position - new Vector3(0, 0, 0.5f);
-                        zWallGO.name = $"zWall{x}_{y}";
-                        zWallGO.hideFlags = HideFlags.HideInInspector | HideFlags.DontSaveInEditor;
-                        SceneVisibilityManager.instance.DisablePicking(zWallGO, true);
-                        
-                        var zWall = zWallGO.GetComponent<GridWall>();
-                        zWall.negativeSquare = grid[x, y - 1];
-                        zWall.positiveSquare = grid[x, y];
-                        zWall.xAxis = false;
-                        zWall.UpdateVisuals();
-                    }
+                if (y > 0)
+                {
+                    var zWallGO = PrefabUtility.InstantiatePrefab(wallPrefab, transform) as GameObject;
+                     zWallGO.transform.localRotation = Quaternion.Euler(0, 0, 0);
+                     zWallGO.transform.position = position - new Vector3(0, 0, 0.5f);
+                     zWallGO.name = $"zWall{x}_{y}";
+                     zWallGO.hideFlags = HideFlags.HideInInspector | HideFlags.DontSaveInEditor;
+                     SceneVisibilityManager.instance.DisablePicking(zWallGO, true);
+                     
+                     var zWall = zWallGO.GetComponent<GridWall>();
+                     zWall.negativeSquare = grid[x, y - 1];
+                     zWall.positiveSquare = grid[x, y];
+                     zWall.xAxis = false;
+                     zWall.UpdateVisuals();
                 }
                 
                 grid[x, y].UpdateVisuals();

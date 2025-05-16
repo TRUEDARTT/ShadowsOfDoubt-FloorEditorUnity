@@ -542,9 +542,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b87ac5432d53d54ea8f6a9ae2ec2e57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedRoomForPainting: 0
+  selectedRoomForPainting: 5
   rooms:
   - id: 9
+    color: {r: 1, g: 1, b: 1, a: 1}
+    roomPreset: Null
+  - id: 3
+    color: {r: 1, g: 1, b: 1, a: 1}
+    roomPreset: Null
+  - id: 4
     color: {r: 1, g: 1, b: 1, a: 1}
     roomPreset: Null
   - id: 27
@@ -556,21 +562,60 @@ MonoBehaviour:
   - id: 29
     color: {r: 1, g: 1, b: 1, a: 1}
     roomPreset: PrivateOffice
+  - id: 5
+    color: {r: 1, g: 1, b: 1, a: 1}
+    roomPreset: Null
   - id: 14
     color: {r: 1, g: 1, b: 1, a: 1}
     roomPreset: CorporateCorridoor
   - id: 15
     color: {r: 1, g: 1, b: 1, a: 1}
     roomPreset: PublicBathroom
+  - id: 16
+    color: {r: 1, g: 1, b: 1, a: 1}
+    roomPreset: PublicBathroom
+  - id: 6
+    color: {r: 1, g: 1, b: 1, a: 1}
+    roomPreset: Null
   - id: 57
     color: {r: 1, g: 1, b: 1, a: 1}
     roomPreset: CorporateLobby
+  - id: 58
+    color: {r: 1, g: 1, b: 1, a: 1}
+    roomPreset: CorporateLobby
+  - id: 7
+    color: {r: 1, g: 1, b: 1, a: 1}
+    roomPreset: Null
   - id: 16
     color: {r: 1, g: 1, b: 1, a: 1}
     roomPreset: StreetFrontage
+  - id: 8
+    color: {r: 1, g: 1, b: 1, a: 1}
+    roomPreset: Null
+  - id: 17
+    color: {r: 1, g: 1, b: 1, a: 1}
+    roomPreset: StreetFrontage
+  - id: 18
+    color: {r: 1, g: 1, b: 1, a: 1}
+    roomPreset: StreetFrontage
+  - id: 10
+    color: {r: 1, g: 1, b: 1, a: 1}
+    roomPreset: Null
+  - id: 19
+    color: {r: 1, g: 1, b: 1, a: 1}
+    roomPreset: StreetFrontage
+  - id: 11
+    color: {r: 1, g: 1, b: 1, a: 1}
+    roomPreset: Null
   - id: 87
     color: {r: 1, g: 1, b: 1, a: 1}
     roomPreset: PowerRoom
+  - id: 12
+    color: {r: 1, g: 1, b: 1, a: 1}
+    roomPreset: Null
+  - id: 92
+    color: {r: 1, g: 1, b: 1, a: 1}
+    roomPreset: CorporateLobby
 --- !u!114 &1657764034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -583,7 +628,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1592b9ada23a2044b9df6ef84467b116, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedAddressForPainting: 0
+  selectedAddressForPainting: 3
   addresses:
   - color: {r: 1, g: 0, b: 0.41361904, a: 1}
     addressPreset: Outside
@@ -648,7 +693,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7e96fedb1965b34e94e107e4a5fc02c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedDoorWindowPreset: 5
+  selectedDoorWindowPreset: 16
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -79,7 +79,7 @@ public class GridSquare : MonoBehaviour
 
         if (_roomPreset != null)
         {
-            labelTMP.text = _roomPreset.roomPreset;
+            labelTMP.text = $"{_roomPreset.roomPreset} - {_roomPreset.id}";
             labelTMP.color = _roomPreset.color;
         }
     }

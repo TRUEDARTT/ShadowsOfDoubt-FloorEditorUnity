@@ -22,7 +22,7 @@ public class DataBuilder : MonoBehaviour
             addressManager.addresses.Clear();
             roomManager.rooms.Clear();
             
-            var roomTypes = new Dictionary<string, Room>();
+            var roomTypes = new Dictionary<(string, int), Room>();
             
             var FloorData = JsonUtility.FromJson<FloorSaveData>(textAsset.text);
             floorName = FloorData.floorName;
@@ -40,21 +40,21 @@ public class DataBuilder : MonoBehaviour
 
                     foreach (RoomSaveData room in addressVariation.r_d)
                     {
-                        if (!roomTypes.ContainsKey(room.l))
+                        if (!roomTypes.ContainsKey((room.l, room.id)))
                         {
-                            roomTypes[room.l] = new Room()
+                            roomTypes[(room.l, room.id)] = new Room()
                             {
                                 id = room.id,
                                 roomPreset = room.l,
                                 color = Color.white
                             };
-                            roomManager.rooms.Add(roomTypes[room.l]);
+                            roomManager.rooms.Add(roomTypes[(room.l, room.id)]);
                         }
                         
                         foreach (NodeSaveData node in room.n_d)
                         {
                             gridManager.GetSquareAt(node.f_c.x, node.f_c.y).SetAddressPreset(addressManager.addresses.Last());
-                            gridManager.GetSquareAt(node.f_c.x, node.f_c.y).SetRoomType(roomTypes[room.l]);
+                            gridManager.GetSquareAt(node.f_c.x, node.f_c.y).SetRoomType(roomTypes[(room.l, room.id)]);
                             gridManager.GetSquareAt(node.f_c.x, node.f_c.y).NodeSaveData = node;
                         }
                     }
