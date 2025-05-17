@@ -119,12 +119,12 @@ public class DataBuilderEditor : Editor
         // Display current text asset
         EditorGUI.BeginDisabledGroup(true);
         EditorGUILayout.ObjectField("Current Floor Data", dataBuilder.textAsset, typeof(TextAsset), false);
-        EditorGUILayout.TextField("Floor Name", dataBuilder.floorName);
         EditorGUI.EndDisabledGroup();
+        
+        dataBuilder.floorName = EditorGUILayout.TextField("Floor Name", dataBuilder.floorName);
 
         EditorGUILayout.Space(10);
-
-        // Replace boolean toggles with buttons
+        
         if (GUILayout.Button("Load Floor Data"))
         {
             if (dataBuilder.textAsset != null)

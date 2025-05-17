@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor;
 using UnityEngine;
 
 // TODO: AddressVariations, TileData
@@ -140,8 +141,9 @@ public class DataBuilder : MonoBehaviour
         // TODO: Marking up tile data
         floorData.t_d = JsonUtility.FromJson<FloorSaveData>(textAsset.text).t_d;
 
-        System.IO.File.WriteAllText(@"E:\UnityDev\SodBuildingVisualiser\Assets\FloorSaves\testNewBuilding.json",
+        System.IO.File.WriteAllText(@"E:\UnityDev\SodBuildingVisualiser\Assets\FloorSaves\" + floorName + ".json",
             JsonUtility.ToJson(floorData, true));
+        AssetDatabase.Refresh();
         Debug.Log("Saved");
     }
 }
