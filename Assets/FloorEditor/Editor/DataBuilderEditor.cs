@@ -30,22 +30,23 @@ public class DataBuilderEditor : Editor
 
         // Combine both arrays with headers for the popup
         allFloorOptions = new string[gameFloorPaths.Length + modFloorPaths.Length + 2];
-        allFloorOptions[0] = "Base Game Floors:";
-        for (int i = 0; i < gameFloorPaths.Length; i++)
-        {
-            allFloorOptions[i + 1] = Path.GetFileNameWithoutExtension(gameFloorPaths[i]);
-        }
         
-        allFloorOptions[gameFloorPaths.Length + 1] = "Modded Floors:";
+        allFloorOptions[0] = "Modded Floors:";
         for (int i = 0; i < modFloorPaths.Length; i++)
         {
-            allFloorOptions[i + gameFloorPaths.Length + 2] = Path.GetFileNameWithoutExtension(modFloorPaths[i]);
+            allFloorOptions[i + 1] = Path.GetFileNameWithoutExtension(modFloorPaths[i]);
+        }
+        
+        allFloorOptions[modFloorPaths.Length + 1] = "Base Game Floors:";
+        for (int i = 0; i < gameFloorPaths.Length; i++)
+        {
+            allFloorOptions[i + modFloorPaths.Length + 2] = Path.GetFileNameWithoutExtension(gameFloorPaths[i]);
         }
     }
 
     public override void OnInspectorGUI()
     {
-serializedObject.Update();
+        serializedObject.Update();
         
         DataBuilder dataBuilder = (DataBuilder)target;
 
@@ -76,7 +77,7 @@ serializedObject.Update();
                     allFloorOptions[i].ToLower().Contains(searchString.ToLower()))
                 {
                     // Headers in bold
-                    if (i == 0 || i == gameFloorPaths.Length + 1)
+                    if (i == 0 || i == modFloorPaths.Length + 1)
                     {
                         EditorGUILayout.LabelField(allFloorOptions[i], EditorStyles.boldLabel);
                         continue;
@@ -98,16 +99,16 @@ serializedObject.Update();
         if (EditorGUI.EndChangeCheck() && selectedFloorIndex >= 0)
         {
             // Rest of the selection handling code remains the same
-            if (selectedFloorIndex != 0 && selectedFloorIndex != gameFloorPaths.Length + 1)
+            if (selectedFloorIndex != 0 && selectedFloorIndex != modFloorPaths.Length + 1)
             {
                 string path;
-                if (selectedFloorIndex <= gameFloorPaths.Length)
+                if (selectedFloorIndex <= modFloorPaths.Length)
                 {
-                    path = gameFloorPaths[selectedFloorIndex - 1];
+                    path = modFloorPaths[selectedFloorIndex - 1];
                 }
                 else
                 {
-                    path = modFloorPaths[selectedFloorIndex - gameFloorPaths.Length - 2];
+                    path = gameFloorPaths[selectedFloorIndex - modFloorPaths.Length - 2];
                 }
                 
                 dataBuilder.textAsset = AssetDatabase.LoadAssetAtPath<TextAsset>(path);

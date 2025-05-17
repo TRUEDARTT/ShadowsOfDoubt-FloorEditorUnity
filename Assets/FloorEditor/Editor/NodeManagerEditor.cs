@@ -9,14 +9,16 @@ public class NodeManagerEditor : Editor
     {
         NodeManager nodeManager = (NodeManager)target;
         
-        // Draw default fields
-        DrawDefaultInspector();
+        EditorGUILayout.LabelField("Paint Settings", EditorStyles.boldLabel);
         
+        nodeManager.SelectedFloorTileType = (NewNode.FloorTileType)EditorGUILayout.EnumPopup("Tile Type", nodeManager.SelectedFloorTileType);
+        
+        EditorGUILayout.Space(10);
+
         // If nodeData is null, don't try to draw its properties
         if (!nodeManager.SelectedNode || nodeManager.SelectedNode.NodeSaveData == null)
             return;
-            
-        EditorGUILayout.Space(10);
+
         EditorGUILayout.LabelField("Node Data", EditorStyles.boldLabel);
         
         // Floor Position

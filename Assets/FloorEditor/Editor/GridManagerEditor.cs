@@ -5,7 +5,9 @@ using UnityEditor.SceneManagement;
 [CustomEditor(typeof(GridManager))]
 public class GridManagerEditor : Editor
 {
-    private bool isNodePainting = false;
+    private bool isAddressPainting = false;
+    private bool isRoomPainting = false;
+    private bool isFloorTypePainting = false;
     private bool isWallPainting = false;
     
     private bool showGridControls = false;
@@ -61,35 +63,49 @@ public class GridManagerEditor : Editor
         showPaintingTools = EditorGUILayout.Foldout(showPaintingTools, "Painting Tools", true);
         if (showPaintingTools && addressManager.addresses.Count > 0)
         {
-            isNodePainting = GUILayout.Toggle(isNodePainting, isNodePainting ? "Disable Node Painting Mode" : "Enable Node Painting Mode", "Button");
+            isAddressPainting = GUILayout.Toggle(isAddressPainting, isAddressPainting ? "Disable Node Address Painting" : "Enable Node Address Painting", "Button");
 
-            if (isNodePainting)
+            if (isAddressPainting)
             {
                 EditorGUILayout.HelpBox(
-                    "Left click: Paint color and room type\n" +
-                    "Shift + Left click: Paint room type only\n" +
-                    "Ctrl + Left click: Paint color only\n\n" +
-                    "Right click: Pick color and room type\n" +
-                    "Shift + Right click: Pick room type only\n" +
-                    "Ctrl + Right click: Pick color only", 
+                    "Left click: Paint address of current type\n" +
+                    "Ctrl + Left click: Pick address type",
                     MessageType.Info
                 );
-
-                isWallPainting = false;
             }
             
-            isWallPainting = GUILayout.Toggle(isWallPainting, isWallPainting ? "Disable Wall Mode" : "Enable Wall Mode", "Button");
+            isRoomPainting = GUILayout.Toggle(isRoomPainting, isRoomPainting ? "Disable Node Room Painting" : "Enable Node Room Painting", "Button");
+
+            if (isRoomPainting)
+            {
+                EditorGUILayout.HelpBox(
+                    "Left click: Paint room of current type\n" +
+                    "Ctrl + Left click: Pick room type",
+                    MessageType.Info
+                );
+            }
+            
+            isFloorTypePainting = GUILayout.Toggle(isFloorTypePainting, isFloorTypePainting ? "Disable Node FloorType Painting" : "Enable Node FloorType Painting", "Button");
+            gridManager.ShowFloorAndCeilingVis = isFloorTypePainting;
+            if (isFloorTypePainting)
+            {
+                EditorGUILayout.HelpBox(
+                    "Left click: Paint current floor type\n" +
+                    "Ctrl + Left click: Pick floor type",
+                    MessageType.Info
+                );
+            }
+            
+            isWallPainting = GUILayout.Toggle(isWallPainting, isWallPainting ? "Disable Wall Painting" : "Enable Wall Painting", "Button");
 
             if (isWallPainting)
             {
                 EditorGUILayout.HelpBox(
                     "Left click: Add wall of the current type\n" +
-                    "Ctrl - Left click: Remove wall\n" +
-                    "Right click: Pick wall type",
+                    "Ctrl - Left click: Pick wall type\n" +
+                    "Right click: Remove wall",
                     MessageType.Info
                 );
-
-                isNodePainting = false;
             }
         }
 
@@ -114,57 +130,51 @@ public class GridManagerEditor : Editor
             if (e.button == 0 || e.button == 1)
             {
                 Ray ray = HandleUtility.GUIPointToWorldRay(e.mousePosition);
+                bool isPicking = e.control;
                 
                 if (Physics.Raycast(ray.origin, ray.direction, out var hitInfo))
                 {
                     GridSquare square = hitInfo.collider.GetComponentInParent<GridSquare>();
-                    if (square != null)
+                    if (square != null && e.button == 0)
                     {
-                        if (isNodePainting)
+                        var doneWork = false;
+
+                        if (isAddressPainting)
                         {
-                            bool shouldPaintAddress = !e.shift;
-                            bool shouldPaintRoom = !e.control;
-                            
-                            // LMB - Paint
-                            if (e.button == 0)
-                            {
-                                if (shouldPaintAddress)
-                                {
-                                    var currentAddressPreset =
-                                        addressManager.addresses[addressManager.selectedAddressForPainting];
-                                    square.AddressPreset = currentAddressPreset;
-                                }
-                                if (shouldPaintRoom)
-                                { 
-                                    square.RoomPreset = roomManager.rooms[roomManager.selectedRoomForPainting];
-                                }
-                                square.UpdateVisuals();
-                                
-                                e.Use();
-                            }
-                            // RMB - Sample
-                            // TODO: Don't sample null
-                            else if (e.button == 1)
-                            {
-                                if (shouldPaintAddress)
-                                {
-                                    addressManager.selectedAddressForPainting = addressManager.addresses.FindIndex(addr => addr == square.AddressPreset);
-                                }
-                                if (shouldPaintRoom)
-                                { 
-                                    roomManager.selectedRoomForPainting = roomManager.rooms.FindIndex(room => room == square.RoomPreset);
-                                }
-                                e.Use();
-                            }
+                            if (isPicking)
+                                addressManager.selectedAddressForPainting = addressManager.addresses.FindIndex(addr => addr == square.AddressPreset);
+                            else
+                                square.AddressPreset = addressManager.addresses[addressManager.selectedAddressForPainting];
+                            doneWork = true;
+                        }
+
+                        if (isRoomPainting)
+                        {
+                            if (isPicking)
+                                roomManager.selectedRoomForPainting = roomManager.rooms.FindIndex(room => room == square.RoomPreset);
+                            else
+                                square.RoomPreset = roomManager.rooms[roomManager.selectedRoomForPainting];
+                            doneWork = true;
+                        }
+
+                        if (isFloorTypePainting)
+                        {
+                            if (isPicking)
+                                nodeManager.SelectedFloorTileType = square.NodeSaveData.f_t;
+                            else
+                                square.NodeSaveData.f_t = nodeManager.SelectedFloorTileType;
+                            doneWork = true;
+                        }
+
+                        if (doneWork)
+                        {
+                            square.UpdateVisuals();
                         }
                         else
                         {
-                            if (e.button == 0)
-                            {
-                                nodeManager.SelectedNode = square;
-                                e.Use();
-                            }
+                            nodeManager.SelectedNode = square;
                         }
+                        e.Use();
                     }
                     
                     GridWall wall = hitInfo.collider.GetComponentInParent<GridWall>();
@@ -174,21 +184,21 @@ public class GridManagerEditor : Editor
                         {
                             if (e.button == 0)
                             {
-                                if (e.control)
+                                if (isPicking && wall.wallType != "")
                                 {
-                                    wall.ChangeWallType(false, "");
+                                    wallManager.selectedDoorWindowPreset = int.Parse(wall.wallType);
                                 }
                                 else
                                 {
                                     wall.ChangeWallType(true, wallManager.selectedDoorWindowPreset.ToString());
                                 }
-                                e.Use();
                             }
-                            else if (e.button == 1 && wall.wallType != "")
+                            else if (e.button == 1)
                             {
-                                wallManager.selectedDoorWindowPreset = int.Parse(wall.wallType);
-                                e.Use();
+                                wall.ChangeWallType(false, "");
                             }
+                            wall.UpdateVisuals();
+                            e.Use();
                         }
                     }
                 }
@@ -196,7 +206,7 @@ public class GridManagerEditor : Editor
         }
 
         // This ensures the scene view updates while painting
-        if (isNodePainting || isWallPainting)
+        if (isAddressPainting || isWallPainting || isFloorTypePainting || isWallPainting)
         {
             SceneView.RepaintAll();
         }

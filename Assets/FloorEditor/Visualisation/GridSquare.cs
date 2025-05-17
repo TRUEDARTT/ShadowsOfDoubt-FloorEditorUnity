@@ -52,13 +52,4 @@ public class GridSquare : MonoBehaviour
             labelTMP.color = RoomPreset.color;
         }
     }
-
-    public void OnDrawGizmos()
-    {
-        if(NodeSaveData.f_t is NewNode.FloorTileType.floorAndCeiling or NewNode.FloorTileType.floorOnly)
-            Gizmos.DrawWireCube(transform.position + new Vector3(0, (NodeSaveData.f_h / 10f) + -0.05f, 0), new Vector3(1, 0.1f, 1));
-        
-        if(NodeSaveData.f_t is NewNode.FloorTileType.floorAndCeiling or NewNode.FloorTileType.CeilingOnly)
-            Gizmos.DrawWireCube(transform.position + new Vector3(0, 5.45f, 0), new Vector3(1, 0.1f, 1));
-    }
 }

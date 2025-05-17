@@ -11,6 +11,8 @@ public class GridManager : MonoBehaviour
 
     private GridSquare[,] grid;
 
+    public bool ShowFloorAndCeilingVis = false;
+    
     public GridSquare[,] Grid => grid;
 
     [InitializeOnLoadMethod]
@@ -97,5 +99,23 @@ public class GridManager : MonoBehaviour
             return grid[x, y];
         }
         return null;
+    }
+    
+    public void OnDrawGizmos()
+    {
+        if (Grid == null)
+            return;
+
+        if (!ShowFloorAndCeilingVis)
+            return;
+        
+        foreach (var square in Grid)
+        {
+            if(square.NodeSaveData.f_t is NewNode.FloorTileType.floorAndCeiling or NewNode.FloorTileType.floorOnly)
+                Gizmos.DrawCube(square.transform.position + new Vector3(0, (square.NodeSaveData.f_h / 10f) + 0.05f, 0), new Vector3(.35f, 0.1f, .35f));
+        
+            if(square.NodeSaveData.f_t is NewNode.FloorTileType.floorAndCeiling or NewNode.FloorTileType.CeilingOnly)
+                Gizmos.DrawWireCube(square.transform.position + new Vector3(0, 1f, 0), new Vector3(1, 0.1f, 1));
+        }
     }
 }

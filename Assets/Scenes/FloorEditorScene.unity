@@ -515,6 +515,7 @@ MonoBehaviour:
   squarePrefab: {fileID: 7100442299879931403, guid: 4f9723c0d26ac984c880b51719635810, type: 3}
   wallPrefab: {fileID: 960951345325088996, guid: c91187da74ef2d04bb81771a6e1a25c8, type: 3}
   cellSize: 1
+  ShowFloorAndCeilingVis: 0
 --- !u!4 &1657764032
 Transform:
   m_ObjectHideFlags: 0
@@ -549,7 +550,7 @@ MonoBehaviour:
     roomPreset: Null
   - id: 1625
     color: {r: 1, g: 1, b: 1, a: 1}
-    roomPreset: Park
+    roomPreset: CustomParkRoomType
   - id: 1630
     color: {r: 1, g: 1, b: 1, a: 1}
     roomPreset: Park
@@ -565,12 +566,15 @@ MonoBehaviour:
   - id: 1646
     color: {r: 1, g: 1, b: 1, a: 1}
     roomPreset: Path
-  - id: 1647
-    color: {r: 1, g: 1, b: 1, a: 1}
-    roomPreset: PublicBathroom
   - id: 1648
     color: {r: 1, g: 1, b: 1, a: 1}
+    roomPreset: PublicBathroom
+  - id: 1647
+    color: {r: 1, g: 1, b: 1, a: 1}
     roomPreset: Lobby
+  - id: 1649
+    color: {r: 1, g: 1, b: 1, a: 1}
+    roomPreset: PublicBathroom
 --- !u!114 &1657764034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -585,56 +589,56 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectedAddressForPainting: 0
   addresses:
-  - rid: 1052737689651773665
-  - rid: 1052737689651773666
-  - rid: 1052737689651773667
-  - rid: 1052737689651773668
-  - rid: 1052737689651773669
-  - rid: 1052737689651773670
-  - rid: 1052737689651773671
-  - rid: 1052737689651773672
+  - rid: 1052737700243964073
+  - rid: 1052737700243964074
+  - rid: 1052737700243964075
+  - rid: 1052737700243964076
+  - rid: 1052737700243964077
+  - rid: 1052737700243964078
+  - rid: 1052737700243964079
+  - rid: 1052737700243964080
   references:
     version: 2
     RefIds:
-    - rid: 1052737689651773665
+    - rid: 1052737700243964073
       type: {class: Address, ns: , asm: Assembly-CSharp}
       data:
         color: {r: 1, g: 0, b: 0.41361904, a: 1}
         addressPreset: Outside
-    - rid: 1052737689651773666
+    - rid: 1052737700243964074
       type: {class: Address, ns: , asm: Assembly-CSharp}
       data:
         color: {r: 1, g: 0.6604272, b: 0, a: 1}
         addressPreset: Lobby
-    - rid: 1052737689651773667
+    - rid: 1052737700243964075
       type: {class: Address, ns: , asm: Assembly-CSharp}
       data:
         color: {r: 0, g: 0.74793315, b: 1, a: 1}
         addressPreset: Park
-    - rid: 1052737689651773668
+    - rid: 1052737700243964076
       type: {class: Address, ns: , asm: Assembly-CSharp}
       data:
         color: {r: 0.65444326, g: 0, b: 1, a: 1}
         addressPreset: Park
-    - rid: 1052737689651773669
+    - rid: 1052737700243964077
       type: {class: Address, ns: , asm: Assembly-CSharp}
       data:
         color: {r: 1, g: 0.9812066, b: 0, a: 1}
         addressPreset: Park
-    - rid: 1052737689651773670
+    - rid: 1052737700243964078
       type: {class: Address, ns: , asm: Assembly-CSharp}
       data:
         color: {r: 0, g: 1, b: 0.05548787, a: 1}
         addressPreset: Park
-    - rid: 1052737689651773671
+    - rid: 1052737700243964079
       type: {class: Address, ns: , asm: Assembly-CSharp}
       data:
         color: {r: 0.21951771, g: 0, b: 1, a: 1}
         addressPreset: Path
-    - rid: 1052737689651773672
+    - rid: 1052737700243964080
       type: {class: Address, ns: , asm: Assembly-CSharp}
       data:
-        color: {r: 0.37540177, g: 0.8472112, b: 0.59156865, a: 1}
+        color: {r: 0.8212653, g: 0.13115887, b: 0.92172986, a: 1}
         addressPreset: BuildingBathrooms
 --- !u!114 &1657764035
 MonoBehaviour:
@@ -648,7 +652,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbf1a9ddb408e374e999f5f0c32485c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textAsset: {fileID: 4900000, guid: ed7bc9950bc8b97448543c8f59b4da36, type: 3}
+  textAsset: {fileID: 4900000, guid: 23321e1cb623ac44c860a63e2e5029e7, type: 3}
   floorName: Park_GroundFloor01
 --- !u!114 &1657764036
 MonoBehaviour:
@@ -663,6 +667,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SelectedNode: {fileID: 0}
+  SelectedFloorTileType: 1
 --- !u!114 &1657764037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -675,7 +680,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7e96fedb1965b34e94e107e4a5fc02c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedDoorWindowPreset: 21
+  selectedDoorWindowPreset: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
