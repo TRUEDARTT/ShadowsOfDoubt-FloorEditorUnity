@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEditor;
 
@@ -15,7 +16,7 @@ public class AddressDrawer : PropertyDrawer
         position.height = EditorGUIUtility.singleLineHeight;
         isExpanded = EditorGUI.Foldout(position, isExpanded, label);
 
-        if (isExpanded)
+        if (isExpanded && property.boxedValue != null)
         {
             // Indent child fields
             EditorGUI.indentLevel++;

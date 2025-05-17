@@ -14,13 +14,17 @@ public class AddressManagerEditor : Editor
         EditorGUI.BeginChangeCheck();
         SerializedProperty addressTypesProperty = serializedObject.FindProperty("addresses");
         EditorGUILayout.PropertyField(addressTypesProperty, true);
-
         
         // If an element was added to the array
         if (EditorGUI.EndChangeCheck() && addressTypesProperty.arraySize > 0)
         {
             // Get the last element (newly added)
             SerializedProperty lastElement = addressTypesProperty.GetArrayElementAtIndex(addressTypesProperty.arraySize - 1);
+            if (lastElement.boxedValue == null)
+            {
+                lastElement.boxedValue = new Address();
+            }
+            
             SerializedProperty colorProperty = lastElement.FindPropertyRelative("color");
             
             // Set random color

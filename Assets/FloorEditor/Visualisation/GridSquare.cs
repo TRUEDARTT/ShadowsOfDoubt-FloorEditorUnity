@@ -6,8 +6,8 @@ using UnityEngine;
 // TODO: Fix locked
 public class GridSquare : MonoBehaviour
 {
-    private Address _addressPreset;
-    private Room _roomPreset;
+    public Address AddressPreset;
+    public Room RoomPreset;
     public NodeSaveData NodeSaveData = new NodeSaveData();
     
     public Color color = Color.white;
@@ -21,17 +21,6 @@ public class GridSquare : MonoBehaviour
     [SerializeField]
     private TextMeshPro labelTMP;
     
-    public static Address NullAddress = new Address()
-    {
-        addressPreset = "Null",
-        color = Color.magenta
-    };
-
-    public static Room NullRoom = new Room()
-    {
-        roomPreset = "Null",
-        color = Color.magenta
-    };
     
     private void OnValidate()
     {
@@ -48,36 +37,19 @@ public class GridSquare : MonoBehaviour
     {
         UpdateVisuals();
     }
-
-    public Address AddressPreset => _addressPreset ?? NullAddress;
-    
-    public void SetAddressPreset(Address addressPreset)
-    {
-        _addressPreset = addressPreset;
-        UpdateVisuals();
-    }
-
-    public Room RoomPreset => _roomPreset ?? null;
-    
-    public void SetRoomType(Room roomPreset)
-    {
-        _roomPreset = roomPreset;
-        // You can add specific color mappings for room types here if desired
-        UpdateVisuals();
-    }
     
     public void UpdateVisuals()
     {
         var color = Color.white;
         if (IsLocked) color = Color.gray;
-        else if (_addressPreset != null) color = _addressPreset.color;
+        else if (AddressPreset != null) color = AddressPreset.color;
         
         thisMat.SetColor("_BaseColor", color);
 
-        if (_roomPreset != null)
+        if (RoomPreset != null)
         {
-            labelTMP.text = $"{_roomPreset.roomPreset} - {_roomPreset.id}";
-            labelTMP.color = _roomPreset.color;
+            labelTMP.text = $"{RoomPreset.roomPreset} - {RoomPreset.id}\n({NodeSaveData.f_c.x},{NodeSaveData.f_c.y})";
+            labelTMP.color = RoomPreset.color;
         }
     }
 

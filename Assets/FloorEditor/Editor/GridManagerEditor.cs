@@ -130,15 +130,15 @@ public class GridManagerEditor : Editor
                             {
                                 if (shouldPaintAddress)
                                 {
-                                    square.SetAddressPreset(addressManager.addresses[addressManager.selectedAddressForPainting]);
+                                    var currentAddressPreset =
+                                        addressManager.addresses[addressManager.selectedAddressForPainting];
+                                    square.AddressPreset = currentAddressPreset;
                                 }
                                 if (shouldPaintRoom)
                                 { 
-                                    square.SetRoomType(roomManager.rooms[roomManager.selectedRoomForPainting]);
+                                    square.RoomPreset = roomManager.rooms[roomManager.selectedRoomForPainting];
                                 }
-                                
-                                EditorUtility.SetDirty(square);
-                                EditorSceneManager.MarkSceneDirty(square.gameObject.scene);
+                                square.UpdateVisuals();
                                 
                                 e.Use();
                             }

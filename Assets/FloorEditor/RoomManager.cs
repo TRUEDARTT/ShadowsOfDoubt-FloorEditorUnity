@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class RoomManager : MonoBehaviour
@@ -7,6 +8,17 @@ public class RoomManager : MonoBehaviour
     [Range(0, 0)]
     public int selectedRoomForPainting = 0;
     public List<Room> rooms = new List<Room>();
+    
+    [InitializeOnLoadMethod]
+    private static void OnProjectReload()
+    {
+        var roomManager = GameObject.FindAnyObjectByType<RoomManager>();
+        if (roomManager)
+        {
+            roomManager.selectedRoomForPainting = 0;
+            roomManager.rooms.Clear();
+        }
+    }
 }
 
 [Serializable]

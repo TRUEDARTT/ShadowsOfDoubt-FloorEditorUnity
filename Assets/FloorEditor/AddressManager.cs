@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -7,7 +8,20 @@ public class AddressManager : MonoBehaviour
 {
     [Range(0, 0)]
     public int selectedAddressForPainting = 0;
+    
+    [SerializeReference]
     public List<Address> addresses = new List<Address>();
+
+    [InitializeOnLoadMethod]
+    private static void OnProjectReload()
+    {
+        var addressManager = GameObject.FindAnyObjectByType<AddressManager>();
+        if (addressManager)
+        {
+            addressManager.selectedAddressForPainting = 0;
+            addressManager.addresses.Clear();
+        }
+    }
 }
 
 [Serializable]

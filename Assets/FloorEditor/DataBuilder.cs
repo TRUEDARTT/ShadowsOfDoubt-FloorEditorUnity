@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -15,6 +14,8 @@ public class DataBuilder : MonoBehaviour
         var roomManager = GetComponent<RoomManager>();
         var gridManager = GetComponent<GridManager>();
 
+        gridManager.CreateGrid();
+        
         addressManager.addresses.Clear();
         roomManager.rooms.Clear();
 
@@ -24,11 +25,13 @@ public class DataBuilder : MonoBehaviour
         floorName = FloorData.floorName;
         foreach (AddressSaveData address in FloorData.a_d)
         {
-            addressManager.addresses.Add(new Address()
+            var newAddress = new Address()
             {
                 addressPreset = address.p_n,
                 color = address.e_c
-            });
+            };
+            
+            addressManager.addresses.Add(newAddress);
 
             if (address.vs.Count > 0)
             {
@@ -49,10 +52,10 @@ public class DataBuilder : MonoBehaviour
 
                     foreach (NodeSaveData node in room.n_d)
                     {
-                        gridManager.GetSquareAt(node.f_c.x, node.f_c.y)
-                            .SetAddressPreset(addressManager.addresses.Last());
-                        gridManager.GetSquareAt(node.f_c.x, node.f_c.y).SetRoomType(roomTypes[(room.l, room.id)]);
+                        gridManager.GetSquareAt(node.f_c.x, node.f_c.y).AddressPreset = newAddress;
+                        gridManager.GetSquareAt(node.f_c.x, node.f_c.y).RoomPreset = roomTypes[(room.l, room.id)];
                         gridManager.GetSquareAt(node.f_c.x, node.f_c.y).NodeSaveData = node;
+                        gridManager.GetSquareAt(node.f_c.x, node.f_c.y).UpdateVisuals();
                     }
                 }
             }
@@ -63,7 +66,7 @@ public class DataBuilder : MonoBehaviour
             wall.UpdateVisuals();
         }
     }
-
+    
     public void Save()
     {
         var addressManager = GetComponent<AddressManager>();
@@ -73,8 +76,12 @@ public class DataBuilder : MonoBehaviour
         FloorSaveData floorData = new FloorSaveData();
         floorData.floorName = floorName;
 
-        var nodeSaves = new Dictionary<Address, List<NodeSaveData>>();
-        var roomSaves = new Dictionary<Address, Dictionary<Room, RoomSaveData>>();
+        var roomSaves = new Dictionary<int, Dictionary<Room, RoomSaveData>>();
+
+        for (var i = 0; i < addressManager.addresses.Count; i++)
+        {
+            roomSaves[i] = new Dictionary<Room, RoomSaveData>();
+        }
 
         for (int x = 0; x < gridManager.width; x++)
         {
@@ -82,14 +89,14 @@ public class DataBuilder : MonoBehaviour
             {
                 var square = gridManager.GetSquareAt(x, y);
 
-                if (!nodeSaves.ContainsKey(square.AddressPreset))
-                    nodeSaves[square.AddressPreset] = new List<NodeSaveData>();
+                var squareAddressIndex = addressManager.addresses.IndexOf(square.AddressPreset);
+                
+                if (!roomSaves.ContainsKey(squareAddressIndex))
+                    Debug.LogError($"Address not found - {square.AddressPreset.addressPreset} - {squareAddressIndex}!");
+                //    roomSaves[square.AddressPreset] = new Dictionary<Room, RoomSaveData>();
 
-                if (!roomSaves.ContainsKey(square.AddressPreset))
-                    roomSaves[square.AddressPreset] = new Dictionary<Room, RoomSaveData>();
-
-                if (!roomSaves[square.AddressPreset].ContainsKey(square.RoomPreset))
-                    roomSaves[square.AddressPreset][square.RoomPreset] = new RoomSaveData()
+                if (!roomSaves[squareAddressIndex].ContainsKey(square.RoomPreset))
+                    roomSaves[squareAddressIndex][square.RoomPreset] = new RoomSaveData()
                     {
                         id = square.RoomPreset.id,
                         l = square.RoomPreset.roomPreset,
@@ -98,7 +105,7 @@ public class DataBuilder : MonoBehaviour
 
                 // Create walls
 
-                roomSaves[square.AddressPreset][square.RoomPreset].n_d.Add(new NodeSaveData()
+                roomSaves[squareAddressIndex][square.RoomPreset].n_d.Add(new NodeSaveData()
                 {
                     f_c = new Vector2Int(x, y),
                     f_h = square.NodeSaveData.f_h,
@@ -109,20 +116,23 @@ public class DataBuilder : MonoBehaviour
             }
         }
 
-        foreach (var address in addressManager.addresses)
+        for (var i = 0; i < addressManager.addresses.Count; i++)
         {
+            var roomSave = roomSaves.ContainsKey(i)
+                ? roomSaves[i].Values.ToList()
+                : new List<RoomSaveData>();
             var addressLayoutVariations = new List<AddressLayoutVariation>()
             {
                 new AddressLayoutVariation()
                 {
-                    r_d = roomSaves.ContainsKey(address) ? roomSaves[address].Values.ToList() : new List<RoomSaveData>()
+                    r_d = roomSave
                 }
             };
 
             floorData.a_d.Add(new AddressSaveData()
             {
-                p_n = address.addressPreset,
-                e_c = address.color,
+                p_n = addressManager.addresses[i].addressPreset,
+                e_c = addressManager.addresses[i].color,
                 vs = addressLayoutVariations
             });
         }

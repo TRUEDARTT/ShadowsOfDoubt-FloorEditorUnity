@@ -16,7 +16,7 @@ public class GridManager : MonoBehaviour
     [InitializeOnLoadMethod]
     private static void OnProjectReload()
     {
-        GameObject.FindAnyObjectByType<GridManager>()?.CreateGrid();
+        GameObject.FindAnyObjectByType<GridManager>()?.ClearGrid();
     }
     
     public void CreateGrid()
@@ -34,10 +34,11 @@ public class GridManager : MonoBehaviour
                 GameObject square = PrefabUtility.InstantiatePrefab(squarePrefab, transform) as GameObject;
                 square.transform.position = position;
                 square.name = $"Square_{x}_{y}";
-                //square.hideFlags = HideFlags.HideInInspector | HideFlags.DontSaveInEditor;
+                square.hideFlags = HideFlags.HideAndDontSave;
                 SceneVisibilityManager.instance.DisablePicking(square, true);
                 
                 grid[x, y] = square.GetComponent<GridSquare>();
+                grid[x, y].NodeSaveData.f_c = new Vector2Int(x, y);
                 
                 if (x < 3 || y < 3 || x > width - 4 || y > height - 4)
                     grid[x, y].IsLocked = true;
@@ -48,7 +49,7 @@ public class GridManager : MonoBehaviour
                     xWallGO.transform.localRotation = Quaternion.Euler(0, 90, 0);
                     xWallGO.transform.position = position - new Vector3(0.5f, 0, 0f);
                     xWallGO.name = $"XWall_{x}_{y}";
-                    xWallGO.hideFlags = HideFlags.HideInInspector | HideFlags.DontSaveInEditor;
+                    xWallGO.hideFlags = HideFlags.HideAndDontSave;
                     SceneVisibilityManager.instance.DisablePicking(xWallGO, true);
                     
                     var xWall = xWallGO.GetComponent<GridWall>();
@@ -64,7 +65,7 @@ public class GridManager : MonoBehaviour
                      zWallGO.transform.localRotation = Quaternion.Euler(0, 0, 0);
                      zWallGO.transform.position = position - new Vector3(0, 0, 0.5f);
                      zWallGO.name = $"zWall{x}_{y}";
-                     zWallGO.hideFlags = HideFlags.HideInInspector | HideFlags.DontSaveInEditor;
+                     zWallGO.hideFlags = HideFlags.HideAndDontSave;
                      SceneVisibilityManager.instance.DisablePicking(zWallGO, true);
                      
                      var zWall = zWallGO.GetComponent<GridWall>();

@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -29,6 +30,14 @@ public class NodeManagerEditor : Editor
         EditorGUILayout.LabelField("Floor Properties", EditorStyles.boldLabel);
         nodeManager.SelectedNode.NodeSaveData.f_t = (NewNode.FloorTileType)EditorGUILayout.EnumPopup("Tile Type", nodeManager.SelectedNode.NodeSaveData.f_t);
         nodeManager.SelectedNode.NodeSaveData.f_r = EditorGUILayout.TextField("Reference ID", nodeManager.SelectedNode.NodeSaveData.f_r);
+        
+        EditorGUILayout.Space(5);
+        EditorGUILayout.LabelField("Walls", EditorStyles.boldLabel);
+        EditorGUILayout.LabelField("-x", nodeManager.SelectedNode.NodeSaveData.w_d.FirstOrDefault(wd => wd.w_o.x < 0)?.p_n ?? "Nothing");
+        EditorGUILayout.LabelField("+x", nodeManager.SelectedNode.NodeSaveData.w_d.FirstOrDefault(wd => wd.w_o.x > 0)?.p_n ?? "Nothing");
+        EditorGUILayout.LabelField("-y", nodeManager.SelectedNode.NodeSaveData.w_d.FirstOrDefault(wd => wd.w_o.y < 0)?.p_n ?? "Nothing");
+        EditorGUILayout.LabelField("+y", nodeManager.SelectedNode.NodeSaveData.w_d.FirstOrDefault(wd => wd.w_o.y > 0)?.p_n ?? "Nothing");
+
         
         EditorGUI.indentLevel--;
         
