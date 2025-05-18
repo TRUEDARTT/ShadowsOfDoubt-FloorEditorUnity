@@ -124,7 +124,7 @@ public class GridManagerEditor : Editor
         WallManager wallManager = gridManager.GetComponent<WallManager>();
         
         Event e = Event.current;
-
+        
         if (e.type == EventType.MouseDown || e.type == EventType.MouseDrag)
         {
             if (e.button == 0 || e.button == 1)
