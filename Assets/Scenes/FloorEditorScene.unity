@@ -544,37 +544,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedRoomForPainting: 0
-  rooms:
-  - id: 62
-    color: {r: 1, g: 1, b: 1, a: 1}
-    roomPreset: Null
-  - id: 1625
-    color: {r: 1, g: 1, b: 1, a: 1}
-    roomPreset: CustomParkRoomType
-  - id: 1630
-    color: {r: 1, g: 1, b: 1, a: 1}
-    roomPreset: Park
-  - id: 1635
-    color: {r: 1, g: 1, b: 1, a: 1}
-    roomPreset: Park
-  - id: 1640
-    color: {r: 1, g: 1, b: 1, a: 1}
-    roomPreset: Park
-  - id: 1645
-    color: {r: 1, g: 1, b: 1, a: 1}
-    roomPreset: Path
-  - id: 1646
-    color: {r: 1, g: 1, b: 1, a: 1}
-    roomPreset: Path
-  - id: 1648
-    color: {r: 1, g: 1, b: 1, a: 1}
-    roomPreset: PublicBathroom
-  - id: 1647
-    color: {r: 1, g: 1, b: 1, a: 1}
-    roomPreset: Lobby
-  - id: 1649
-    color: {r: 1, g: 1, b: 1, a: 1}
-    roomPreset: PublicBathroom
+  rooms: []
 --- !u!114 &1657764034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -589,57 +559,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectedAddressForPainting: 0
   addresses:
-  - rid: 1052737700243964073
-  - rid: 1052737700243964074
-  - rid: 1052737700243964075
-  - rid: 1052737700243964076
-  - rid: 1052737700243964077
-  - rid: 1052737700243964078
-  - rid: 1052737700243964079
-  - rid: 1052737700243964080
+  - rid: 1052737712202711503
+  - rid: 1052737712202711504
   references:
     version: 2
     RefIds:
-    - rid: 1052737700243964073
+    - rid: 1052737712202711503
       type: {class: Address, ns: , asm: Assembly-CSharp}
       data:
-        color: {r: 1, g: 0, b: 0.41361904, a: 1}
+        color: {r: 1, g: 0, b: 0.41, a: 1}
         addressPreset: Outside
-    - rid: 1052737700243964074
+    - rid: 1052737712202711504
       type: {class: Address, ns: , asm: Assembly-CSharp}
       data:
-        color: {r: 1, g: 0.6604272, b: 0, a: 1}
+        color: {r: 1, g: 0.66, b: 0, a: 1}
         addressPreset: Lobby
-    - rid: 1052737700243964075
-      type: {class: Address, ns: , asm: Assembly-CSharp}
-      data:
-        color: {r: 0, g: 0.74793315, b: 1, a: 1}
-        addressPreset: Park
-    - rid: 1052737700243964076
-      type: {class: Address, ns: , asm: Assembly-CSharp}
-      data:
-        color: {r: 0.65444326, g: 0, b: 1, a: 1}
-        addressPreset: Park
-    - rid: 1052737700243964077
-      type: {class: Address, ns: , asm: Assembly-CSharp}
-      data:
-        color: {r: 1, g: 0.9812066, b: 0, a: 1}
-        addressPreset: Park
-    - rid: 1052737700243964078
-      type: {class: Address, ns: , asm: Assembly-CSharp}
-      data:
-        color: {r: 0, g: 1, b: 0.05548787, a: 1}
-        addressPreset: Park
-    - rid: 1052737700243964079
-      type: {class: Address, ns: , asm: Assembly-CSharp}
-      data:
-        color: {r: 0.21951771, g: 0, b: 1, a: 1}
-        addressPreset: Path
-    - rid: 1052737700243964080
-      type: {class: Address, ns: , asm: Assembly-CSharp}
-      data:
-        color: {r: 0.8212653, g: 0.13115887, b: 0.92172986, a: 1}
-        addressPreset: BuildingBathrooms
 --- !u!114 &1657764035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -653,7 +587,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textAsset: {fileID: 4900000, guid: 23321e1cb623ac44c860a63e2e5029e7, type: 3}
-  floorName: Park_GroundFloor01
+  floorName: CustomParkGroundFloor
 --- !u!114 &1657764036
 MonoBehaviour:
   m_ObjectHideFlags: 0

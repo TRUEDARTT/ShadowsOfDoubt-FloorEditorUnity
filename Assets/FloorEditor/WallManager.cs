@@ -6,10 +6,18 @@ public class WallManager : MonoBehaviour
 {
     [Range(0, 27)]
     public int selectedDoorWindowPreset = 0;
-    
-    private void OnValidate()
+
+    public void Reset()
     {
-        // currentDoorWindowPresetName = DoorWindowPresets[selectedDoorWindowPreset.ToString()];
+        
+    }
+
+    public enum WallModelType
+    {
+        Wall,
+        Window,
+        Door,
+        Blank
     }
 
     public static Dictionary<string, string> DoorWindowPresets = new Dictionary<string, string>()
@@ -41,5 +49,36 @@ public class WallManager : MonoBehaviour
         {"25", "DecoHandrail"},
         {"26", "WindowSmallWithUpperSpace"},
         {"27", "WindowSmallLowWithUpperSpace"}
+    };
+    
+    public static Dictionary<string, WallModelType> DoorWindowModels = new Dictionary<string, WallModelType>()
+    {
+        {"0", WallModelType.Wall},
+        {"1", WallModelType.Wall},
+        {"2", WallModelType.Wall},
+        {"4", WallModelType.Blank},
+        {"5", WallModelType.Blank},
+        {"6", WallModelType.Blank},
+        {"7", WallModelType.Door},
+        {"8", WallModelType.Door},
+        {"9", WallModelType.Door},
+        {"10", WallModelType.Blank},
+        {"11", WallModelType.Wall},
+        {"12", WallModelType.Wall},
+        {"13", WallModelType.Wall},
+        {"14", WallModelType.Window},
+        {"15", WallModelType.Window},
+        {"16", WallModelType.Window},
+        {"17", WallModelType.Window},
+        {"18", WallModelType.Window},
+        {"19", WallModelType.Window},
+        {"20", WallModelType.Window},
+        {"21", WallModelType.Wall},
+        {"22", WallModelType.Door},
+        {"23", WallModelType.Wall},
+        {"24", WallModelType.Wall},
+        {"25", WallModelType.Wall},
+        {"26", WallModelType.Window},
+        {"27", WallModelType.Window}
     };
 }

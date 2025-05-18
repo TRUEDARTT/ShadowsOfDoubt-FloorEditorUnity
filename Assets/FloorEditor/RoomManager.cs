@@ -7,17 +7,13 @@ public class RoomManager : MonoBehaviour
 {
     [Range(0, 0)]
     public int selectedRoomForPainting = 0;
-    public List<Room> rooms = new List<Room>();
     
-    [InitializeOnLoadMethod]
-    private static void OnProjectReload()
+    public List<Room> rooms = new List<Room>();
+
+    public void Reset()
     {
-        var roomManager = GameObject.FindAnyObjectByType<RoomManager>();
-        if (roomManager)
-        {
-            roomManager.selectedRoomForPainting = 0;
-            roomManager.rooms.Clear();
-        }
+        selectedRoomForPainting = 0;
+        rooms.Clear();
     }
 }
 

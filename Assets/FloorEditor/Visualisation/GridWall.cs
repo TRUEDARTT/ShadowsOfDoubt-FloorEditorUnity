@@ -8,9 +8,22 @@ public class GridWall : MonoBehaviour
     public GridSquare positiveSquare;
     public string wallType = "";
     
-    public Transform wallMesh;
-    public TMP_Text wallTextFront;
-    public TMP_Text wallTextBack;
+    [SerializeField]
+    private Transform wallMeshContainer;
+    
+    [SerializeField]
+    private TMP_Text wallTextFront;
+    [SerializeField]
+    private TMP_Text wallTextBack;
+
+    [SerializeField]
+    private Transform wallModel;
+    [SerializeField]
+    private Transform windowModel;
+    [SerializeField]
+    private Transform doorModel;
+    [SerializeField]
+    private Transform blankModel;
     
     public void ChangeWallType(bool active, string type)
     {
@@ -89,6 +102,30 @@ public class GridWall : MonoBehaviour
         wallTextFront.gameObject.SetActive(wallIsActive);
         wallTextBack.gameObject.SetActive(wallIsActive);
 
+        wallModel.gameObject.SetActive(wallType == "");
+        windowModel.gameObject.SetActive(false);
+        doorModel.gameObject.SetActive(false);
+        blankModel.gameObject.SetActive(false);
+
+        if (wallType != "")
+        {
+            switch (WallManager.DoorWindowModels[wallType])
+            {
+                case WallManager.WallModelType.Window:
+                    windowModel.gameObject.SetActive(true);
+                    break;
+                case WallManager.WallModelType.Door:
+                    doorModel.gameObject.SetActive(true);
+                    break;
+                case WallManager.WallModelType.Blank:
+                    blankModel.gameObject.SetActive(true);
+                    break;
+                default:
+                    wallModel.gameObject.SetActive(true);
+                    break;
+            }
+        }
+        
         if (wallType != "")
         {
             wallTextFront.text = WallManager.DoorWindowPresets[wallType];
@@ -106,12 +143,12 @@ public class GridWall : MonoBehaviour
         if (active)
         {
             transform.position = new Vector3(transform.position.x, 0.25f, transform.position.z);
-            wallMesh.localScale = new Vector3(0.1f, 0.5f, wallMesh.localScale.z);
+            wallMeshContainer.localScale = new Vector3(wallMeshContainer.localScale.x, 1, wallMeshContainer.localScale.z);
         }
         else
         {
             transform.position = new Vector3(transform.position.x, 0.0025f, transform.position.z);
-            wallMesh.localScale = new Vector3(0.05f, 0.05f, wallMesh.localScale.z);
+            wallMeshContainer.localScale = new Vector3(wallMeshContainer.localScale.x, 0.1f, wallMeshContainer.localScale.z);
         }
     }
 }

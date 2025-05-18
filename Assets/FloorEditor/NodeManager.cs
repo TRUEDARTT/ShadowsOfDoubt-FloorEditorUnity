@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class NodeManager : MonoBehaviour
@@ -6,4 +7,9 @@ public class NodeManager : MonoBehaviour
     public GridSquare SelectedNode;
     
     public NewNode.FloorTileType SelectedFloorTileType;
+
+    public void Reset()
+    {
+        
+    }
 }

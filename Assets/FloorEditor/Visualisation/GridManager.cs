@@ -90,6 +90,11 @@ public class GridManager : MonoBehaviour
         {
             DestroyImmediate(transform.GetChild(0).gameObject);
         }
+
+        GetComponent<AddressManager>()?.Reset();
+        GetComponent<RoomManager>()?.Reset();
+        GetComponent<WallManager>()?.Reset();
+        GetComponent<NodeManager>()?.Reset();
     }
     
     public GridSquare GetSquareAt(int x, int y)

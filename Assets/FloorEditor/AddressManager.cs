@@ -13,17 +13,21 @@ public class AddressManager : MonoBehaviour
     public int selectedAddressForPainting = 0;
     
     [SerializeReference]
-    public List<Address> addresses = new List<Address>();
-
-    [InitializeOnLoadMethod]
-    private static void OnProjectReload()
+    public List<Address> addresses;
+    
+    public void Reset()
     {
-        var addressManager = GameObject.FindAnyObjectByType<AddressManager>();
-        if (addressManager)
+        selectedAddressForPainting = 0;
+        addresses.Clear();
+        
+        var defaultAddresses = new List<Address>()
         {
-            addressManager.selectedAddressForPainting = 0;
-            addressManager.addresses.Clear();
-        }
+            new Address() { addressPreset = "Outside", color = new Color(1, 0, 0.41f) },
+            new Address() { addressPreset = "Lobby", color = new Color(1, 0.66f, 0) },
+        };
+        
+        foreach (var address in defaultAddresses)
+            addresses.Add(address);
     }
 }
 
