@@ -4,6 +4,9 @@ using UnityEditor;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
+// TODO: Address [0] is always outside
+// Address[1] is always lobby
+
 public class AddressManager : MonoBehaviour
 {
     [Range(0, 0)]

@@ -39,6 +39,9 @@ public class GridWall : MonoBehaviour
         bool hasNegativeWall = false;
         bool hasPositiveWall = false;
 
+        string negativeWallType = "";
+        string positiveWallType = "";
+        
         wallType = "";
         
         // Check negative square's walls
@@ -49,7 +52,7 @@ public class GridWall : MonoBehaviour
             // For z-axis walls, positive y means wall facing forward
             if (checkValue > 0)
             {
-                wallType = wallData.p_n;
+                negativeWallType = wallData.p_n;
                 hasNegativeWall = true;
                 break;
             }
@@ -63,9 +66,19 @@ public class GridWall : MonoBehaviour
             // For z-axis walls, negative y means wall facing back
             if (checkValue < 0)
             {
+                positiveWallType = wallData.p_n;
                 hasPositiveWall = true;
                 break;
             }
+        }
+
+        if (negativeWallType == positiveWallType)
+        {
+            wallType = negativeWallType;
+        }
+        else
+        {
+            Debug.LogWarning($"Non matching wall types between ({negativeSquare.NodeSaveData.f_c.x}, {negativeSquare.NodeSaveData.f_c.y}) ({negativeWallType}) and ({positiveSquare.NodeSaveData.f_c.x}, {positiveSquare.NodeSaveData.f_c.y}) ({positiveWallType})");
         }
 
         // Only show wall if both squares have matching walls
