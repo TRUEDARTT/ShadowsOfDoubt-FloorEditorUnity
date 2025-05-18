@@ -4383,6 +4383,20 @@
             ]
         },
         {
+            "p_n": "Lobby",
+            "e_c": {
+                "r": 0.9622641801834106,
+                "g": 0.5037922263145447,
+                "b": 0.02269490621984005,
+                "a": 1.0
+            },
+            "vs": [
+                {
+                    "r_d": []
+                }
+            ]
+        },
+        {
             "p_n": "VentedRooftop",
             "e_c": {
                 "r": 0.15233342349529267,
@@ -4795,592 +4809,592 @@
     ],
     "t_d": [
         {
+            "e_l": false,
+            "e_r": 0,
             "f_c": {
                 "x": 0,
                 "y": 0
             },
             "i_e": false,
             "m_e": false,
-            "s_t": false,
-            "e_l": false,
             "s_r": 0,
-            "e_r": 0
+            "s_t": false
         },
         {
+            "e_l": false,
+            "e_r": 0,
             "f_c": {
                 "x": 0,
                 "y": 1
             },
             "i_e": false,
             "m_e": false,
-            "s_t": false,
-            "e_l": false,
             "s_r": 0,
-            "e_r": 0
+            "s_t": false
         },
         {
+            "e_l": false,
+            "e_r": 0,
             "f_c": {
                 "x": 0,
                 "y": 2
             },
             "i_e": false,
             "m_e": false,
-            "s_t": false,
-            "e_l": false,
             "s_r": 0,
-            "e_r": 0
+            "s_t": false
         },
         {
+            "e_l": false,
+            "e_r": 0,
             "f_c": {
                 "x": 0,
                 "y": 3
             },
-            "i_e": true,
+            "i_e": false,
             "m_e": false,
-            "s_t": false,
-            "e_l": false,
             "s_r": 0,
-            "e_r": 0
+            "s_t": false
         },
         {
+            "e_l": false,
+            "e_r": 0,
             "f_c": {
                 "x": 0,
                 "y": 4
             },
             "i_e": false,
             "m_e": false,
-            "s_t": false,
-            "e_l": false,
             "s_r": 0,
-            "e_r": 0
+            "s_t": false
         },
         {
+            "e_l": false,
+            "e_r": 0,
             "f_c": {
                 "x": 0,
                 "y": 5
             },
             "i_e": false,
             "m_e": false,
-            "s_t": false,
-            "e_l": false,
             "s_r": 0,
-            "e_r": 0
+            "s_t": false
         },
         {
+            "e_l": false,
+            "e_r": 0,
             "f_c": {
                 "x": 0,
                 "y": 6
             },
             "i_e": false,
             "m_e": false,
-            "s_t": false,
-            "e_l": false,
             "s_r": 0,
-            "e_r": 0
+            "s_t": false
         },
         {
+            "e_l": false,
+            "e_r": 0,
             "f_c": {
                 "x": 1,
                 "y": 0
             },
             "i_e": false,
             "m_e": false,
-            "s_t": false,
-            "e_l": false,
             "s_r": 0,
-            "e_r": 0
+            "s_t": false
         },
         {
+            "e_l": false,
+            "e_r": 0,
             "f_c": {
                 "x": 1,
                 "y": 1
             },
             "i_e": false,
             "m_e": false,
-            "s_t": false,
-            "e_l": false,
             "s_r": 0,
-            "e_r": 0
+            "s_t": false
         },
         {
+            "e_l": false,
+            "e_r": 0,
             "f_c": {
                 "x": 1,
                 "y": 2
             },
             "i_e": false,
             "m_e": false,
-            "s_t": false,
-            "e_l": false,
             "s_r": 0,
-            "e_r": 0
+            "s_t": false
         },
         {
+            "e_l": false,
+            "e_r": 0,
             "f_c": {
                 "x": 1,
                 "y": 3
             },
-            "i_e": true,
+            "i_e": false,
             "m_e": false,
-            "s_t": false,
-            "e_l": false,
             "s_r": 0,
-            "e_r": 0
+            "s_t": false
         },
         {
+            "e_l": false,
+            "e_r": 0,
             "f_c": {
                 "x": 1,
                 "y": 4
             },
             "i_e": false,
             "m_e": false,
-            "s_t": false,
-            "e_l": false,
             "s_r": 0,
-            "e_r": 0
+            "s_t": false
         },
         {
+            "e_l": false,
+            "e_r": 0,
             "f_c": {
                 "x": 1,
                 "y": 5
             },
             "i_e": false,
             "m_e": false,
-            "s_t": false,
-            "e_l": false,
             "s_r": 0,
-            "e_r": 0
+            "s_t": false
         },
         {
+            "e_l": false,
+            "e_r": 0,
             "f_c": {
                 "x": 1,
                 "y": 6
             },
             "i_e": false,
             "m_e": false,
-            "s_t": false,
-            "e_l": false,
             "s_r": 0,
-            "e_r": 0
+            "s_t": false
         },
         {
+            "e_l": false,
+            "e_r": 0,
             "f_c": {
                 "x": 2,
                 "y": 0
             },
             "i_e": false,
             "m_e": false,
-            "s_t": false,
-            "e_l": false,
             "s_r": 0,
-            "e_r": 0
+            "s_t": false
         },
         {
+            "e_l": false,
+            "e_r": 0,
             "f_c": {
                 "x": 2,
                 "y": 1
             },
             "i_e": false,
             "m_e": false,
-            "s_t": false,
-            "e_l": false,
             "s_r": 0,
-            "e_r": 0
+            "s_t": false
         },
         {
+            "e_l": false,
+            "e_r": 0,
             "f_c": {
                 "x": 2,
                 "y": 2
             },
             "i_e": false,
             "m_e": false,
-            "s_t": false,
-            "e_l": false,
             "s_r": 0,
-            "e_r": 0
+            "s_t": false
         },
         {
+            "e_l": false,
+            "e_r": 0,
             "f_c": {
                 "x": 2,
                 "y": 3
             },
             "i_e": false,
             "m_e": false,
-            "s_t": false,
-            "e_l": false,
             "s_r": 0,
-            "e_r": 0
+            "s_t": false
         },
         {
+            "e_l": false,
+            "e_r": 0,
             "f_c": {
                 "x": 2,
                 "y": 4
             },
             "i_e": false,
             "m_e": false,
-            "s_t": false,
-            "e_l": false,
             "s_r": 0,
-            "e_r": 0
+            "s_t": false
         },
         {
+            "e_l": false,
+            "e_r": 0,
             "f_c": {
                 "x": 2,
                 "y": 5
             },
             "i_e": false,
             "m_e": false,
-            "s_t": false,
-            "e_l": false,
             "s_r": 0,
-            "e_r": 0
+            "s_t": false
         },
         {
+            "e_l": false,
+            "e_r": 0,
             "f_c": {
                 "x": 2,
                 "y": 6
             },
             "i_e": false,
             "m_e": false,
-            "s_t": false,
-            "e_l": false,
             "s_r": 0,
-            "e_r": 0
+            "s_t": false
         },
         {
+            "e_l": false,
+            "e_r": 0,
             "f_c": {
                 "x": 3,
                 "y": 0
             },
-            "i_e": true,
-            "m_e": true,
-            "s_t": false,
-            "e_l": false,
+            "i_e": false,
+            "m_e": false,
             "s_r": 0,
-            "e_r": 0
+            "s_t": false
         },
         {
+            "e_l": false,
+            "e_r": 0,
             "f_c": {
                 "x": 3,
                 "y": 1
             },
-            "i_e": true,
-            "m_e": true,
-            "s_t": false,
-            "e_l": false,
+            "i_e": false,
+            "m_e": false,
             "s_r": 0,
-            "e_r": 0
+            "s_t": false
         },
         {
+            "e_l": false,
+            "e_r": 0,
             "f_c": {
                 "x": 3,
                 "y": 2
             },
             "i_e": false,
             "m_e": false,
-            "s_t": false,
-            "e_l": false,
             "s_r": 0,
-            "e_r": 0
+            "s_t": false
         },
         {
+            "e_l": false,
+            "e_r": 0,
             "f_c": {
                 "x": 3,
                 "y": 3
             },
             "i_e": false,
             "m_e": false,
-            "s_t": false,
-            "e_l": false,
             "s_r": 0,
-            "e_r": 0
+            "s_t": false
         },
         {
+            "e_l": false,
+            "e_r": 0,
             "f_c": {
                 "x": 3,
                 "y": 4
             },
             "i_e": false,
             "m_e": false,
-            "s_t": false,
-            "e_l": false,
             "s_r": 0,
-            "e_r": 0
+            "s_t": false
         },
         {
+            "e_l": false,
+            "e_r": 0,
             "f_c": {
                 "x": 3,
                 "y": 5
             },
-            "i_e": true,
+            "i_e": false,
             "m_e": false,
-            "s_t": false,
-            "e_l": false,
             "s_r": 0,
-            "e_r": 0
+            "s_t": false
         },
         {
+            "e_l": false,
+            "e_r": 0,
             "f_c": {
                 "x": 3,
                 "y": 6
             },
-            "i_e": true,
+            "i_e": false,
             "m_e": false,
-            "s_t": false,
-            "e_l": false,
             "s_r": 0,
-            "e_r": 0
+            "s_t": false
         },
         {
+            "e_l": false,
+            "e_r": 0,
             "f_c": {
                 "x": 4,
                 "y": 0
             },
             "i_e": false,
             "m_e": false,
-            "s_t": false,
-            "e_l": false,
             "s_r": 0,
-            "e_r": 0
+            "s_t": false
         },
         {
+            "e_l": false,
+            "e_r": 0,
             "f_c": {
                 "x": 4,
                 "y": 1
             },
             "i_e": false,
             "m_e": false,
-            "s_t": false,
-            "e_l": false,
             "s_r": 0,
-            "e_r": 0
+            "s_t": false
         },
         {
+            "e_l": false,
+            "e_r": 0,
             "f_c": {
                 "x": 4,
                 "y": 2
             },
             "i_e": false,
             "m_e": false,
-            "s_t": false,
-            "e_l": false,
             "s_r": 0,
-            "e_r": 0
+            "s_t": false
         },
         {
+            "e_l": false,
+            "e_r": 0,
             "f_c": {
                 "x": 4,
                 "y": 3
             },
             "i_e": false,
             "m_e": false,
-            "s_t": false,
-            "e_l": false,
             "s_r": 0,
-            "e_r": 0
+            "s_t": false
         },
         {
+            "e_l": false,
+            "e_r": 0,
             "f_c": {
                 "x": 4,
                 "y": 4
             },
             "i_e": false,
             "m_e": false,
-            "s_t": false,
-            "e_l": false,
             "s_r": 0,
-            "e_r": 0
+            "s_t": false
         },
         {
+            "e_l": false,
+            "e_r": 0,
             "f_c": {
                 "x": 4,
                 "y": 5
             },
             "i_e": false,
             "m_e": false,
-            "s_t": false,
-            "e_l": false,
             "s_r": 0,
-            "e_r": 0
+            "s_t": false
         },
         {
+            "e_l": false,
+            "e_r": 0,
             "f_c": {
                 "x": 4,
                 "y": 6
             },
             "i_e": false,
             "m_e": false,
-            "s_t": false,
-            "e_l": false,
             "s_r": 0,
-            "e_r": 0
+            "s_t": false
         },
         {
+            "e_l": false,
+            "e_r": 0,
             "f_c": {
                 "x": 5,
                 "y": 0
             },
             "i_e": false,
             "m_e": false,
-            "s_t": false,
-            "e_l": false,
             "s_r": 0,
-            "e_r": 0
+            "s_t": false
         },
         {
+            "e_l": false,
+            "e_r": 0,
             "f_c": {
                 "x": 5,
                 "y": 1
             },
             "i_e": false,
             "m_e": false,
-            "s_t": false,
-            "e_l": false,
             "s_r": 0,
-            "e_r": 0
+            "s_t": false
         },
         {
+            "e_l": false,
+            "e_r": 0,
             "f_c": {
                 "x": 5,
                 "y": 2
             },
             "i_e": false,
             "m_e": false,
-            "s_t": false,
-            "e_l": false,
             "s_r": 0,
-            "e_r": 0
+            "s_t": false
         },
         {
+            "e_l": false,
+            "e_r": 0,
             "f_c": {
                 "x": 5,
                 "y": 3
             },
-            "i_e": true,
+            "i_e": false,
             "m_e": false,
-            "s_t": false,
-            "e_l": false,
             "s_r": 0,
-            "e_r": 0
+            "s_t": false
         },
         {
+            "e_l": false,
+            "e_r": 0,
             "f_c": {
                 "x": 5,
                 "y": 4
             },
             "i_e": false,
             "m_e": false,
-            "s_t": false,
-            "e_l": false,
             "s_r": 0,
-            "e_r": 0
+            "s_t": false
         },
         {
+            "e_l": false,
+            "e_r": 0,
             "f_c": {
                 "x": 5,
                 "y": 5
             },
             "i_e": false,
             "m_e": false,
-            "s_t": false,
-            "e_l": false,
             "s_r": 0,
-            "e_r": 0
+            "s_t": false
         },
         {
+            "e_l": false,
+            "e_r": 0,
             "f_c": {
                 "x": 5,
                 "y": 6
             },
             "i_e": false,
             "m_e": false,
-            "s_t": false,
-            "e_l": false,
             "s_r": 0,
-            "e_r": 0
+            "s_t": false
         },
         {
+            "e_l": false,
+            "e_r": 0,
             "f_c": {
                 "x": 6,
                 "y": 0
             },
             "i_e": false,
             "m_e": false,
-            "s_t": false,
-            "e_l": false,
             "s_r": 0,
-            "e_r": 0
+            "s_t": false
         },
         {
+            "e_l": false,
+            "e_r": 0,
             "f_c": {
                 "x": 6,
                 "y": 1
             },
             "i_e": false,
             "m_e": false,
-            "s_t": false,
-            "e_l": false,
             "s_r": 0,
-            "e_r": 0
+            "s_t": false
         },
         {
+            "e_l": false,
+            "e_r": 0,
             "f_c": {
                 "x": 6,
                 "y": 2
             },
             "i_e": false,
             "m_e": false,
-            "s_t": false,
-            "e_l": false,
             "s_r": 0,
-            "e_r": 0
+            "s_t": false
         },
         {
+            "e_l": false,
+            "e_r": 0,
             "f_c": {
                 "x": 6,
                 "y": 3
             },
-            "i_e": true,
+            "i_e": false,
             "m_e": false,
-            "s_t": false,
-            "e_l": false,
             "s_r": 0,
-            "e_r": 0
+            "s_t": false
         },
         {
+            "e_l": false,
+            "e_r": 0,
             "f_c": {
                 "x": 6,
                 "y": 4
             },
             "i_e": false,
             "m_e": false,
-            "s_t": false,
-            "e_l": false,
             "s_r": 0,
-            "e_r": 0
+            "s_t": false
         },
         {
+            "e_l": false,
+            "e_r": 0,
             "f_c": {
                 "x": 6,
                 "y": 5
             },
             "i_e": false,
             "m_e": false,
-            "s_t": false,
-            "e_l": false,
             "s_r": 0,
-            "e_r": 0
+            "s_t": false
         },
         {
+            "e_l": false,
+            "e_r": 0,
             "f_c": {
                 "x": 6,
                 "y": 6
             },
             "i_e": false,
             "m_e": false,
-            "s_t": false,
-            "e_l": false,
             "s_r": 0,
-            "e_r": 0
+            "s_t": false
         }
     ]
 }

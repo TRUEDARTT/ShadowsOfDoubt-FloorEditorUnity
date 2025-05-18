@@ -1,44 +1,47 @@
-using Unity.VisualScripting;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEditor;
 
-[CustomPropertyDrawer(typeof(Address))]
-public class AddressDrawer : PropertyDrawer
+[CustomPropertyDrawer(typeof(Room))]
+public class RoomDrawer : PropertyDrawer
 {
-    // Used to store the expanded state
     private bool isExpanded = true;
     
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
     {
         EditorGUI.BeginProperty(position, label, property);
 
-        // Draw foldout arrow
         position.height = EditorGUIUtility.singleLineHeight;
         isExpanded = EditorGUI.Foldout(position, isExpanded, label);
 
         if (isExpanded && property.boxedValue != null)
         {
-            // Indent child fields
             EditorGUI.indentLevel++;
 
             // Calculate rects for the fields
-            Rect addressRect = new Rect(position.x, position.y + EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing,
+            Rect idRect = new Rect(position.x, position.y + EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing,
                 position.width, EditorGUIUtility.singleLineHeight);
             
-            Rect colorRect = new Rect(position.x, addressRect.y + EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing,
+            Rect roomTypeRect = new Rect(position.x, idRect.y + EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing,
+                position.width, EditorGUIUtility.singleLineHeight);
+            
+            Rect colorRect = new Rect(position.x, roomTypeRect.y + EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing,
                 position.width, EditorGUIUtility.singleLineHeight);
 
-            // Get the addressPreset property
-            SerializedProperty addressPresetProp = property.FindPropertyRelative("addressPreset");
+            // Get the properties
+            SerializedProperty idProp = property.FindPropertyRelative("id");
+            SerializedProperty roomPresetProp = property.FindPropertyRelative("roomPreset");
             SerializedProperty colorProp = property.FindPropertyRelative("color");
 
-            // Draw popup and text field
-            string currentValue = addressPresetProp.stringValue;
+            // Draw ID field
+            EditorGUI.PropertyField(idRect, idProp);
+
+            // Draw room preset popup and text field
+            string currentValue = roomPresetProp.stringValue;
             
             // Create a list with an additional "Custom" option
-            string[] options = new string[AddressPresets.AddressPreset.Length + 1];
+            string[] options = new string[RoomPresets.RoomPreset.Length + 1];
             options[0] = "Custom";
-            AddressPresets.AddressPreset.CopyTo(options, 1);
+            RoomPresets.RoomPreset.CopyTo(options, 1);
 
             // Find the current index
             int currentIndex = 0; // Default to "Custom"
@@ -54,23 +57,23 @@ public class AddressDrawer : PropertyDrawer
             // Draw the popup
             EditorGUI.BeginChangeCheck();
             int newIndex = EditorGUI.Popup(
-                new Rect(addressRect.x, addressRect.y, addressRect.width - 200, addressRect.height),
-                "Address Type", currentIndex, options);
+                new Rect(roomTypeRect.x, roomTypeRect.y, roomTypeRect.width - 200, roomTypeRect.height),
+                "Room Type", currentIndex, options);
             
             // If a preset was selected, update the value
             if (EditorGUI.EndChangeCheck() && newIndex != 0)
             {
-                addressPresetProp.stringValue = options[newIndex];
+                roomPresetProp.stringValue = options[newIndex];
             }
 
             // Always show the text field for custom input
             string newValue = EditorGUI.TextField(
-                new Rect(addressRect.x + addressRect.width - 195, addressRect.y, 195, addressRect.height),
-                addressPresetProp.stringValue);
+                new Rect(roomTypeRect.x + roomTypeRect.width - 195, roomTypeRect.y, 195, roomTypeRect.height),
+                roomPresetProp.stringValue);
             
-            if (newValue != addressPresetProp.stringValue)
+            if (newValue != roomPresetProp.stringValue)
             {
-                addressPresetProp.stringValue = newValue;
+                roomPresetProp.stringValue = newValue;
             }
 
             // Draw the color field
@@ -87,6 +90,6 @@ public class AddressDrawer : PropertyDrawer
         if (!isExpanded)
             return EditorGUIUtility.singleLineHeight;
             
-        return EditorGUIUtility.singleLineHeight * 3 + EditorGUIUtility.standardVerticalSpacing * 2;
+        return EditorGUIUtility.singleLineHeight * 4 + EditorGUIUtility.standardVerticalSpacing * 3;
     }
 }
