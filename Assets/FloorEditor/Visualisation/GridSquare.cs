@@ -48,7 +48,7 @@ public class GridSquare : MonoBehaviour
 
         if (RoomPreset != null)
         {
-            labelTMP.text = $"{RoomPreset.roomPreset} - {RoomPreset.id}\n({NodeSaveData.f_c.x},{NodeSaveData.f_c.y})";
+            labelTMP.text = $"{RoomPreset.roomPreset}\n{RoomPreset.id}\n({NodeSaveData.f_c.x},{NodeSaveData.f_c.y})";
             labelTMP.color = RoomPreset.color;
         }
     }
