@@ -103,7 +103,7 @@ public class GridManagerEditor : Editor
                 EditorGUILayout.HelpBox(
                     "Left click: Add wall of the current type\n" +
                     "Ctrl - Left click: Pick wall type\n" +
-                    "Right click: Remove wall",
+                    "Shift - Left click: Remove wall",
                     MessageType.Info
                 );
             }
@@ -127,10 +127,11 @@ public class GridManagerEditor : Editor
         
         if (e.type == EventType.MouseDown || e.type == EventType.MouseDrag)
         {
-            if (e.button == 0 || e.button == 1)
+            if (e.button == 0)
             {
                 Ray ray = HandleUtility.GUIPointToWorldRay(e.mousePosition);
                 bool isPicking = e.control;
+                bool isShifting = e.shift;
                 
                 if (Physics.Raycast(ray.origin, ray.direction, out var hitInfo))
                 {
@@ -160,9 +161,15 @@ public class GridManagerEditor : Editor
                         if (isFloorTypePainting)
                         {
                             if (isPicking)
+                            {
                                 nodeManager.SelectedFloorTileType = square.NodeSaveData.f_t;
+                                nodeManager.ExtraFloorHeight = square.NodeSaveData.f_h;
+                            }
                             else
+                            {
                                 square.NodeSaveData.f_t = nodeManager.SelectedFloorTileType;
+                                square.NodeSaveData.f_h = nodeManager.ExtraFloorHeight;
+                            }
                             doneWork = true;
                         }
 
@@ -188,14 +195,14 @@ public class GridManagerEditor : Editor
                                 {
                                     wallManager.selectedDoorWindowPreset = int.Parse(wall.wallType);
                                 }
+                                else if (isShifting)
+                                {
+                                    wall.ChangeWallType(false, "");
+                                }
                                 else
                                 {
                                     wall.ChangeWallType(true, wallManager.selectedDoorWindowPreset.ToString());
                                 }
-                            }
-                            else if (e.button == 1)
-                            {
-                                wall.ChangeWallType(false, "");
                             }
                             wall.UpdateVisuals();
                             e.Use();

@@ -148,6 +148,11 @@ public class DataBuilderEditor : Editor
                 EditorUtility.DisplayDialog("Error", "Please enter a floor name before saving.", "OK");
             }
         }
+
+        EditorGUILayout.Space(10);
+
+        dataBuilder.floorHeight = EditorGUILayout.IntField("Ceiling Height",dataBuilder.floorHeight);
+
         
         serializedObject.ApplyModifiedProperties();
     }

@@ -8,6 +8,9 @@ public class NodeManager : MonoBehaviour
     
     public NewNode.FloorTileType SelectedFloorTileType;
 
+    [Range(0, 10)]
+    public int ExtraFloorHeight = 0;
+
     public void Reset()
     {
         

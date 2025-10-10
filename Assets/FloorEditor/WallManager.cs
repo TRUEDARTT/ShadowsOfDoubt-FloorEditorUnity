@@ -48,7 +48,10 @@ public class WallManager : MonoBehaviour
         {"24", "WoodenFenceJoinRight"},
         {"25", "DecoHandrail"},
         {"26", "WindowSmallWithUpperSpace"},
-        {"27", "WindowSmallLowWithUpperSpace"}
+        {"27", "WindowSmallLowWithUpperSpace"},
+        {"28", "Unknown01" },
+        {"29", "Unknown02" },
+        {"30", "Unknown03" }
     };
     
     public static Dictionary<string, WallModelType> DoorWindowModels = new Dictionary<string, WallModelType>()
@@ -79,6 +82,9 @@ public class WallManager : MonoBehaviour
         {"24", WallModelType.Wall},
         {"25", WallModelType.Wall},
         {"26", WallModelType.Window},
-        {"27", WallModelType.Window}
+        {"27", WallModelType.Window},
+        {"28", WallModelType.Wall },
+        {"29", WallModelType.Wall },
+        {"30", WallModelType.Wall }
     };
 }

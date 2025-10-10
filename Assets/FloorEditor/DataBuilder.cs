@@ -8,6 +8,7 @@ public class DataBuilder : MonoBehaviour
 {
     public TextAsset textAsset;
     public string floorName;
+    public int floorHeight;
 
     public void Load()
     {
@@ -24,6 +25,7 @@ public class DataBuilder : MonoBehaviour
 
         var FloorData = JsonUtility.FromJson<FloorSaveData>(textAsset.text);
         floorName = FloorData.floorName;
+        floorHeight = FloorData.defaultCeilingHeight;
         foreach (AddressSaveData address in FloorData.a_d)
         {
             var newAddress = new Address()
@@ -76,6 +78,7 @@ public class DataBuilder : MonoBehaviour
 
         FloorSaveData floorData = new FloorSaveData();
         floorData.floorName = floorName;
+        floorData.defaultCeilingHeight = floorHeight;
 
         var roomSaves = new Dictionary<int, Dictionary<Room, RoomSaveData>>();
 
@@ -111,7 +114,7 @@ public class DataBuilder : MonoBehaviour
                     f_c = new Vector2Int(x, y),
                     f_h = square.NodeSaveData.f_h,
                     f_t = square.NodeSaveData.f_t,
-                    f_r = "", // Seems to be blank in real files?
+                    f_r = "", // Seems to be blank in real files? better to leave it blank (means forced room)
                     w_d = square.NodeSaveData.w_d
                 });
             }
@@ -141,8 +144,7 @@ public class DataBuilder : MonoBehaviour
         // TODO: Marking up tile data
         floorData.t_d = JsonUtility.FromJson<FloorSaveData>(textAsset.text).t_d;
 
-        System.IO.File.WriteAllText(@"E:\UnityDev\SodBuildingVisualiser\Assets\FloorSaves\" + floorName + ".json",
-            JsonUtility.ToJson(floorData, true));
+        System.IO.File.WriteAllText(Application.dataPath + @"\FloorSaves\" + floorName + ".json",JsonUtility.ToJson(floorData, true)); // piepie i hate that youre cutting the lines in half btw also no longer a hardcoded path
         AssetDatabase.Refresh();
         Debug.Log("Saved");
     }

@@ -12,12 +12,12 @@ public class NodeManagerEditor : Editor
         EditorGUILayout.LabelField("Paint Settings", EditorStyles.boldLabel);
         
         nodeManager.SelectedFloorTileType = (NewNode.FloorTileType)EditorGUILayout.EnumPopup("Tile Type", nodeManager.SelectedFloorTileType);
-        
+        nodeManager.ExtraFloorHeight = EditorGUILayout.IntSlider("Extra Floor Height", nodeManager.ExtraFloorHeight, 0, 100);
+
         EditorGUILayout.Space(10);
 
         // If nodeData is null, don't try to draw its properties
-        if (!nodeManager.SelectedNode || nodeManager.SelectedNode.NodeSaveData == null)
-            return;
+        if (!nodeManager.SelectedNode || nodeManager.SelectedNode.NodeSaveData == null) return;
 
         EditorGUILayout.LabelField("Node Data", EditorStyles.boldLabel);
         

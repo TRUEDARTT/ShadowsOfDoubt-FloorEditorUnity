@@ -116,8 +116,27 @@ public class GridManager : MonoBehaviour
         
         foreach (var square in Grid)
         {
-            if(square.NodeSaveData.f_t is NewNode.FloorTileType.floorAndCeiling or NewNode.FloorTileType.floorOnly)
-                Gizmos.DrawCube(square.transform.position + new Vector3(0, (square.NodeSaveData.f_h / 10f) + 0.05f, 0), new Vector3(.35f, 0.1f, .35f));
+            switch (square.NodeSaveData.f_t)
+            {
+                case NewNode.FloorTileType.floorOnly:
+                    Gizmos.color = Color.red;
+                    break;
+                case NewNode.FloorTileType.CeilingOnly:
+                    Gizmos.color = Color.yellow;
+                    break;
+                case NewNode.FloorTileType.floorAndCeiling:
+                    Gizmos.color = Color.green;
+                    break;
+                case NewNode.FloorTileType.none:
+                    Gizmos.color = Color.black;
+                    break;
+                case NewNode.FloorTileType.noneButIndoors:
+                    Gizmos.color = Color.white;
+                    break;
+            }
+
+
+            Gizmos.DrawCube(square.transform.position + new Vector3(0, (square.NodeSaveData.f_h / 100f) + 0.05f, 0), new Vector3(.35f, 0.1f, .35f));
         
             if(square.NodeSaveData.f_t is NewNode.FloorTileType.floorAndCeiling or NewNode.FloorTileType.CeilingOnly)
                 Gizmos.DrawWireCube(square.transform.position + new Vector3(0, 1f, 0), new Vector3(1, 0.1f, 1));
