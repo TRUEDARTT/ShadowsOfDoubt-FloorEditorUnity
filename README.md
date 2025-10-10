@@ -15,7 +15,7 @@ Doors and windows are assigned on the connections between tiles.
    ![Vanilla Park](https://raw.githubusercontent.com/piepieonline/ShadowsOfDoubt-FloorEditorUnity/refs/heads/main/github/parkVanillaOpen.png)
 4. You can now edit the floorplan (Example edit)
    ![Custom Park](https://raw.githubusercontent.com/piepieonline/ShadowsOfDoubt-FloorEditorUnity/refs/heads/main/github/parkCustomComplete.png)
-5. In the Data Builder, change the Floor Name, then Save
+5. In the Data Builder, change the Floor Name, then Save (The path is the project /Assets/FloorSaves)
 
 * This tool just makes the floorplans, it doesn't load them in.
 
